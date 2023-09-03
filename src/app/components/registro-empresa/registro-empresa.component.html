@@ -1,0 +1,36 @@
+<div class="contenedor-principal col-md-6 mx-auto mt-5 border rounded shadow">
+  <img src="../../../assets/img/fondoRegistro.jpg" width="70%" alt="" />
+  <div class="contenedor-derecha">
+    <h6>Registro de tu empresa</h6>
+    <hr />
+    <label>Nombre de la empresa</label>
+    <input [(ngModel)]="nombreEmpresa" type="text" />
+    <label>Nombre del admintrador </label>
+    <input [(ngModel)]="nombreAdmin" type="text" />
+    <label>Ruc de la empresa</label>
+    <input [(ngModel)]="ruc" type="text" />
+    <label>Tipo de empresa</label>
+    <select [(ngModel)]="tipoEmpresa">
+      <option>Seleccione</option>
+      <option>Comida</option>
+      <option>Tecnolgia</option>
+      <option>Farmacia</option>
+    </select>
+    <label>Eslogan</label>
+    <textarea [(ngModel)]="eslogan" rows="4" cols="23"></textarea>
+    <label>Correo empresarial</label>
+    <input type="text" disabled />
+    <label>Contraseña</label>
+    <input [(ngModel)]="password" type="password" />
+    <label *ngIf="error == true" style="color: red">{{ lblError }}</label>
+    <button (click)="btnRegistrar()" type="submit" class="btn btn-success">
+      Registrar
+    </button>
+  </div>
+</div>
+
+<div class="contenedor-principal v2">
+  <h3>Logo de tu empresa</h3>
+  <input type="file" id="fileInput" accept="image/*" />
+  <img id="imgLogo" src="" alt="" />
+</div>

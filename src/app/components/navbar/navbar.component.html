@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a (click)="navegarDashboard()">
+      <img
+        src="../../../assets/img/logo.png"
+        alt="Bootstrap"
+        width="60"
+        height="60"
+      />
+    </a>
+
+    <a class="navbar-brand text-success" routerLinkActive="active" href="#"
+      >Nuestras Empresas</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div>
+      <form class="d-flex" role="search">
+        <button
+          (click)="navegarRegistroEm()"
+          class="btn btn-outline-success"
+          type="submit"
+        >
+          Registrar Empresa
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
