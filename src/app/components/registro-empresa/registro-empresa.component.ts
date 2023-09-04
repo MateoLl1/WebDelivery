@@ -1,3 +1,4 @@
+import { DeliveryService } from './../../services/delivery.service';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ImagesService } from 'src/app/services/images.service';
@@ -8,6 +9,8 @@ import { ImagesService } from 'src/app/services/images.service';
   styleUrls: ['./registro-empresa.component.css'],
 })
 export class RegistroEmpresaComponent {
+  empresasDB: any[] = [];
+
   //Data del hosting de imagenes
   selectedFile: File | null = null;
   imageBase64: string | null = null;
@@ -18,26 +21,35 @@ export class RegistroEmpresaComponent {
   nombreEmpresa: string = '';
   nombreAdmin: string = '';
   ruc: string = '';
-  tipoEmpresa: string = '';
+  tipoEmpresa: number = 0;
   eslogan: string = '';
   correoEmpresarial: string = '';
   password: string = '';
   error: boolean = false;
   lblError: string = '';
 
-  constructor(private servidor: ImagesService) {}
+  constructor(
+    private servidor: ImagesService,
+    private delivery: DeliveryService
+  ) {
+    delivery.cargarTipoEmpresa().subscribe((data: any) => {
+      console.log(data);
+      this.empresasDB = data;
+    });
+  }
   ngOnInit() {
     setInterval(() => {
       this.generarCorreo();
     }, 3000);
   }
 
+  //Objeto de envio
+
   btnRegistrar() {
     if (
       this.nombreEmpresa.trim() === '' ||
       this.nombreAdmin.trim() === '' ||
-      this.tipoEmpresa.trim() === '' ||
-      this.tipoEmpresa.trim() === '' ||
+      this.tipoEmpresa === 0 ||
       this.eslogan.trim() === '' ||
       this.password.trim() === ''
     ) {
@@ -61,7 +73,30 @@ export class RegistroEmpresaComponent {
             if (this.password.length >= 8) {
               this.error = false;
               this.lblError = '';
+
               ///REGISTRO
+              if (!(this.hostImages === '')) {
+                const objetoEmpresa = {
+                  nombreEmpresa: this.nombreEmpresa,
+                  nombreAdmin: this.nombreAdmin,
+                  eslogan: this.eslogan,
+                  correo: this.correoEmpresarial,
+                  password: this.password,
+                  ruc: this.ruc,
+                  imagen: this.hostImages,
+                  tipoEmpresa: +this.tipoEmpresa,
+                };
+                console.log(objetoEmpresa);
+                this.delivery
+                  .registrarEmpresa(objetoEmpresa)
+                  .subscribe((data: any) => {
+                    console.log(data);
+                  });
+                ///FIN DE REGISTRO
+              } else {
+                this.error = true;
+                this.lblError = 'Ingrese un logo';
+              }
             } else {
               this.error = true;
               this.lblError = 'Contraseña insegura';
@@ -85,6 +120,7 @@ export class RegistroEmpresaComponent {
   generarCorreo() {
     let correo = this.nombreEmpresa.charAt(0).toLowerCase();
     correo = correo + this.nombreAdmin.toLowerCase() + this.ruc.slice(-3);
+    correo = correo.replace(/\s+/g, '');
     this.correoEmpresarial = correo;
     return correo;
   }

@@ -11,6 +11,7 @@ import { RegistroEmpresaComponent } from './components/registro-empresa/registro
 
 //Services
 import { HttpClientModule } from '@angular/common/http';
+import { EmpresaComponent } from './components/empresa/empresa.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     BodyEmpresaComponent,
     RegistroEmpresaComponent,
+    EmpresaComponent,
   ],
   imports: [BrowserModule, APP_ROUTING, FormsModule, HttpClientModule],
   providers: [],

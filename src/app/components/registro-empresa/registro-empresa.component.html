@@ -11,10 +11,10 @@
     <input [(ngModel)]="ruc" type="text" />
     <label>Tipo de empresa</label>
     <select [(ngModel)]="tipoEmpresa">
-      <option>Seleccione</option>
-      <option>Comida</option>
-      <option>Tecnolgia</option>
-      <option>Farmacia</option>
+      <option [value]="0">Seleccione</option>
+      <option *ngFor="let item of empresasDB" [value]="item.ti_e_id">
+        {{ item.ti_e_descri }}
+      </option>
     </select>
     <label>Eslogan</label>
     <textarea [(ngModel)]="eslogan" rows="4" cols="23"></textarea>

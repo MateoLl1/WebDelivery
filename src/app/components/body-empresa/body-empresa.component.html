@@ -1,87 +1,24 @@
 <div class="centrar-contenedor m-5">
-  <div class="card mb-3" style="max-width: 540px">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img
-          src="https://th.bing.com/th/id/R.11e7b0b17901f8d830c04f41607d6743?rik=MyHC78C5rnzTyQ&pid=ImgRaw&r=0"
-          class="img-fluid rounded-start h-100 w-100 object-fit-cover"
-          alt="..."
-        />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
-          <p class="card-text"></p>
+  <button (click)="imprimir(1)">alerta</button>
+  <a href="" (click)="imprimir(item.em_id)" *ngFor="let item of empresasDB">
+    <div class="card mb-3" style="max-width: 640px">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            [src]="item.em_imagen"
+            class="img-fluid rounded-start h-100 w-100 object-fit-cover"
+            alt="..."
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.em_nombre }}</h5>
+            <p class="card-text">
+              {{ item.em_eslogan }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="card mb-3" style="max-width: 540px">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img
-          src="https://th.bing.com/th/id/R.11e7b0b17901f8d830c04f41607d6743?rik=MyHC78C5rnzTyQ&pid=ImgRaw&r=0"
-          class="img-fluid rounded-start h-100 w-100 object-fit-cover"
-          alt="..."
-        />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
-          <p class="card-text"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img
-          src="https://th.bing.com/th/id/R.11e7b0b17901f8d830c04f41607d6743?rik=MyHC78C5rnzTyQ&pid=ImgRaw&r=0"
-          class="img-fluid rounded-start h-100 w-100 object-fit-cover"
-          alt="..."
-        />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
-          <p class="card-text"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img
-          src="https://th.bing.com/th/id/R.11e7b0b17901f8d830c04f41607d6743?rik=MyHC78C5rnzTyQ&pid=ImgRaw&r=0"
-          class="img-fluid rounded-start h-100 w-100 object-fit-cover"
-          alt="..."
-        />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
-          <p class="card-text"></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </a>
 </div>
