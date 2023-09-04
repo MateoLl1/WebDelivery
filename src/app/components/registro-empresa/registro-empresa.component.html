@@ -19,7 +19,7 @@
     <label>Eslogan</label>
     <textarea [(ngModel)]="eslogan" rows="4" cols="23"></textarea>
     <label>Correo empresarial</label>
-    <input type="text" disabled />
+    <input type="text" disabled [(ngModel)]="correoEmpresarial" />
     <label>Contraseña</label>
     <input [(ngModel)]="password" type="password" />
     <label *ngIf="error == true" style="color: red">{{ lblError }}</label>
@@ -31,6 +31,16 @@
 
 <div class="contenedor-principal v2">
   <h3>Logo de tu empresa</h3>
-  <input type="file" id="fileInput" accept="image/*" />
-  <img id="imgLogo" src="" alt="" />
+  <input
+    type="file"
+    id="fileInput"
+    accept="image/*"
+    (change)="onFileSelected($event)"
+  />
+  <div class="container text-center" *ngIf="llego">
+    <p>{{ hostImages }}</p>
+    <div class="d-flex justify-content-center align-items-center">
+      <img id="imgLogo" [src]="hostImages" alt="" />
+    </div>
+  </div>
 </div>

@@ -9,6 +9,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BodyEmpresaComponent } from './components/body-empresa/body-empresa.component';
 import { RegistroEmpresaComponent } from './components/registro-empresa/registro-empresa.component';
 
+//Services
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +20,7 @@ import { RegistroEmpresaComponent } from './components/registro-empresa/registro
     BodyEmpresaComponent,
     RegistroEmpresaComponent,
   ],
-  imports: [BrowserModule, APP_ROUTING, FormsModule],
+  imports: [BrowserModule, APP_ROUTING, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -26,14 +26,19 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 
 #imgLogo {
-  height: 200px;
+  height: 300px;
 }
 
 @media (max-width: 1100px) {
   img {
     display: none;
+  }
+
+  #imgLogo {
+    display: flex;
   }
 }

@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ImagesService } from 'src/app/services/images.service';
 
 @Component({
   selector: 'app-registro-empresa',
@@ -6,6 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./registro-empresa.component.css'],
 })
 export class RegistroEmpresaComponent {
+  //Data del hosting de imagenes
+  selectedFile: File | null = null;
+  imageBase64: string | null = null;
+  imagen: string | null = null;
+  hostImages: string = '';
+  llego: boolean = false;
+
   nombreEmpresa: string = '';
   nombreAdmin: string = '';
   ruc: string = '';
@@ -15,6 +24,13 @@ export class RegistroEmpresaComponent {
   password: string = '';
   error: boolean = false;
   lblError: string = '';
+
+  constructor(private servidor: ImagesService) {}
+  ngOnInit() {
+    setInterval(() => {
+      this.generarCorreo();
+    }, 3000);
+  }
 
   btnRegistrar() {
     if (
@@ -63,6 +79,45 @@ export class RegistroEmpresaComponent {
         this.lblError = 'Ruc invalido';
         console.log(error);
       }
+    }
+  }
+
+  generarCorreo() {
+    let correo = this.nombreEmpresa.charAt(0).toLowerCase();
+    correo = correo + this.nombreAdmin.toLowerCase() + this.ruc.slice(-3);
+    this.correoEmpresarial = correo;
+    return correo;
+  }
+
+  //Servidor de imagenes
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+
+    if (file) {
+      this.selectedFile = file;
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.imageBase64 = e.target.result as string;
+        this.imagen = this.imageBase64.replace(
+          /^data:image\/(png|jpg|jpeg);base64,/,
+          ''
+        );
+        this.subirImagen();
+      };
+      reader.readAsDataURL(this.selectedFile!);
+    }
+  }
+
+  async subirImagen() {
+    if (this.imagen) {
+      this.servidor.subirImagenes(this.imagen).subscribe((data: any) => {
+        this.hostImages = data.data.url;
+        console.log(data.data.url);
+        this.llego = true;
+      });
+    } else {
+      console.log('No hay imagen');
     }
   }
 
