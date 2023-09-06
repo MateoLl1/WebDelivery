@@ -1,1 +1,77 @@
-<p>empresa works!</p>
+<div *ngFor="let item of empresa" class="text-center m-2">
+  <img
+    [src]="item.em_imagen"
+    alt="Logo"
+    width="80"
+    height="80"
+    class="d-inline-block align-text-top"
+  />
+  <hr />
+</div>
+
+<div class="container m-5 centrar">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-3" style="max-width: 300px; height: 380px">
+        <img
+          src="https://th.bing.com/th/id/OIP.JEqiCE1O8fjGLmrCZurJJwHaGa?pid=ImgDet&rs=1"
+          class="card-img-top"
+          alt="..."
+          height="240px"
+          style="object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            Actualizar informacion de la empresa
+          </h5>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button">Ver mas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card mb-3" style="max-width: 300px; height: 380px">
+        <img
+          src="https://4.bp.blogspot.com/-oOHjS6bYVw0/V7f1xolPZDI/AAAAAAAAAMc/Jtx9hXSJi4Qqx_VgVC2oMIMu3AJB8tbCgCLcB/s1600/descarga.jpg"
+          class="card-img-top"
+          alt="..."
+          height="250px"
+          style="object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center">Ingresar nuevos productos</h5>
+          <div class="d-grid gap-2">
+            <button
+              (click)="navegarInventarioProducto()"
+              class="btn btn-primary"
+              type="button"
+            >
+              Ver mas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-3" style="max-width: 300px; height: 380px">
+        <img
+          src="https://th.bing.com/th/id/R.349a36d0508839d9d40a040b5e7196d1?rik=2CzWfbcbWLglQg&pid=ImgRaw&r=0"
+          class="card-img-top"
+          alt="..."
+          height="250px"
+          style="object-fit: cover"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center">Informe de ventas</h5>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button">Ver mas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ////// -->
+  </div>
+</div>

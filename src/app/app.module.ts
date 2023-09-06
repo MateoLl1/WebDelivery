@@ -12,6 +12,10 @@ import { RegistroEmpresaComponent } from './components/registro-empresa/registro
 //Services
 import { HttpClientModule } from '@angular/common/http';
 import { EmpresaComponent } from './components/empresa/empresa.component';
+import { InventarioProductosComponent } from './components/inventario-productos/inventario-productos.component';
+import { InfoEmpresaComponent } from './components/info-empresa/info-empresa.component';
+import { InformesEmpresaComponent } from './components/informes-empresa/informes-empresa.component';
+import { NoImagenPipe } from './pipes/no-imagen.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import { EmpresaComponent } from './components/empresa/empresa.component';
     BodyEmpresaComponent,
     RegistroEmpresaComponent,
     EmpresaComponent,
+    InventarioProductosComponent,
+    InfoEmpresaComponent,
+    InformesEmpresaComponent,
+    NoImagenPipe,
   ],
   imports: [BrowserModule, APP_ROUTING, FormsModule, HttpClientModule],
   providers: [],

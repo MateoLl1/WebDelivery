@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { DeliveryService } from './../../services/delivery.service';
 import { Component } from '@angular/core';
 
@@ -10,15 +11,16 @@ import Swal from 'sweetalert2';
 })
 export class BodyEmpresaComponent {
   empresasDB: any[] = [];
-  constructor(private delivery: DeliveryService) {
+  constructor(private delivery: DeliveryService, private router: Router) {
     delivery.cargarEmpresas().subscribe((data: any) => {
       this.empresasDB = data;
       console.log(this.empresasDB);
     });
   }
 
-  imprimir(id: number) {
-    Swal.fire('¡Hola, mundo!', 'Esta es una alerta de ejemplo.', 'error');
+  navegarEmpresa(id: number) {
+    this.router.navigate(['empresa', id]);
   }
+
   //////
 }

@@ -24,4 +24,10 @@ export class DeliveryService {
       headers: this.headers,
     });
   }
+
+  empresaId(data: any) {
+    return this.http.post(`${this.servidorLocal}/idEmpresa`, data, {
+      headers: this.headers,
+    });
+  }
 }

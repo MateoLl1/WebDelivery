@@ -1,0 +1,66 @@
+<div *ngFor="let item of empresa" class="text-center m-2">
+  <img
+    [src]="item.em_imagen"
+    alt="Logo"
+    width="80"
+    height="80"
+    class="d-inline-block align-text-top"
+  />
+  <hr />
+</div>
+<div class="container form">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >Nombre del Producto</label
+    >
+    <input
+      [(ngModel)]="nombreProducto"
+      type="text"
+      class="form-control"
+      aria-describedby="emailHelp"
+    />
+
+    <label for="exampleInputEmail1" class="form-label"
+      >Descripcion del producto</label
+    >
+    <input
+      [(ngModel)]="descripcion"
+      type="text"
+      class="form-control"
+      aria-describedby="emailHelp"
+    />
+
+    <label for="exampleInputEmail1" class="form-label"
+      >Precio del producto</label
+    >
+    <input
+      [(ngModel)]="precio"
+      type="number"
+      step="0.01"
+      class="form-control"
+      aria-describedby="emailHelp"
+      id="txtPrecio"
+      [value]="precio"
+    />
+    <div *ngIf="error" class="form-text" style="color: red">
+      {{ lblError }}
+    </div>
+    <button
+      (click)="insertarProducto()"
+      type="submit"
+      class="btn btn-primary m-2"
+    >
+      Ingresar
+    </button>
+  </div>
+  <div class="caja-imagen">
+    <input
+      type="file"
+      id="fileInput"
+      accept="image/*"
+      (change)="onFileSelected($event)"
+    />
+    <img *ngIf="llego == false" [src]="sinImagen" width="200px" alt="" />
+    <img *ngIf="llego == true" [src]="hostImages" width="300px" alt="" />
+  </div>
+</div>

@@ -1,6 +1,5 @@
 <div class="centrar-contenedor m-5">
-  <button (click)="imprimir(1)">alerta</button>
-  <a href="" (click)="imprimir(item.em_id)" *ngFor="let item of empresasDB">
+  <a *ngFor="let item of empresasDB" (click)="navegarEmpresa(item.em_id)">
     <div class="card mb-3" style="max-width: 640px">
       <div class="row g-0">
         <div class="col-md-4">
