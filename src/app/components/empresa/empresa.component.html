@@ -9,7 +9,7 @@
   <hr />
 </div>
 
-<div class="container m-5 centrar">
+<div class="container centrar">
   <div class="row">
     <div class="col-md-4">
       <div class="card mb-3" style="max-width: 300px; height: 380px">
@@ -25,7 +25,13 @@
             Actualizar informacion de la empresa
           </h5>
           <div class="d-grid gap-2">
-            <button class="btn btn-primary" type="button">Ver mas</button>
+            <button
+              (click)="navegarInfoEmpresa()"
+              class="btn btn-primary"
+              type="button"
+            >
+              Ver mas
+            </button>
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { DeliveryService } from './../../services/delivery.service';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ImagesService } from 'src/app/services/images.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-empresa',
@@ -30,7 +32,8 @@ export class RegistroEmpresaComponent {
 
   constructor(
     private servidor: ImagesService,
-    private delivery: DeliveryService
+    private delivery: DeliveryService,
+    private router: Router
   ) {
     delivery.cargarTipoEmpresa().subscribe((data: any) => {
       console.log(data);
@@ -91,7 +94,16 @@ export class RegistroEmpresaComponent {
                   .registrarEmpresa(objetoEmpresa)
                   .subscribe((data: any) => {
                     console.log(data);
+                    if (data.Res === true) {
+                      Swal.fire('Empresa Registrada', '', 'success');
+                      setTimeout(() => {
+                        this.router.navigate(['dashboard']);
+                      }, 2000);
+                    } else {
+                      Swal.fire('Error de conexion!', '', 'error');
+                    }
                   });
+
                 ///FIN DE REGISTRO
               } else {
                 this.error = true;

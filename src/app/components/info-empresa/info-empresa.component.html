@@ -1,1 +1,106 @@
-<p>info-empresa works!</p>
+<div *ngFor="let item of empresa" class="text-center m-2">
+  <img
+    [src]="item.em_imagen"
+    alt="Logo"
+    width="80"
+    height="80"
+    class="d-inline-block align-text-top"
+    id="imgCargar"
+  />
+  <hr />
+</div>
+
+<div class="container" style="margin-bottom: 100px">
+  <h3 class="text-bg-success text-center">Informacion Empresarial</h3>
+  <div class="container form">
+    <div class="mb-3 contenedor-derecha">
+      <label for="exampleInputEmail1" class="form-label">ID</label>
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        [(ngModel)]="em_id"
+        disabled
+      />
+      <label for="exampleInputEmail1" class="form-label"
+        >Nombre de la empresa</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        [(ngModel)]="em_nombre"
+      />
+      <label for="exampleInputEmail1" class="form-label"
+        >Nombre del administrador</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        [(ngModel)]="em_admin"
+      />
+      <label for="exampleInputEmail1" class="form-label"
+        >Ruc de la empresa</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        [(ngModel)]="em_ruc"
+      />
+      <label for="exampleInputEmail1" class="form-label">Tipo de empresa</label>
+      <select [(ngModel)]="ti_em">
+        <option [value]="0">Seleccione</option>
+        <option *ngFor="let item of tipoEmpresas" [value]="item.ti_e_id">
+          {{ item.ti_e_descri }}
+        </option>
+      </select>
+      <label>Eslogan</label>
+      <textarea [(ngModel)]="em_eslogan" rows="4" cols="23"></textarea>
+
+      <label for="exampleInputEmail1" class="form-label"
+        >Correo Empresarial</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        disabled
+        [(ngModel)]="em_correo"
+      />
+      <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        [(ngModel)]="em_password"
+      />
+
+      <div *ngIf="error" class="form-text" style="color: red">
+        {{ lblError }}
+      </div>
+      <button (click)="actualizarInfo()" class="btn btn-info m-1" type="button">
+        Actualizar informacion
+      </button>
+      <button
+        (click)="eliminarEmpresa()"
+        class="btn btn-danger m-1"
+        type="button"
+      >
+        Eliminar Empresa
+      </button>
+    </div>
+
+    <div class="caja-imagen">
+      <input
+        type="file"
+        id="fileInput"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+      />
+      <img *ngIf="llego == false" [src]="sinImagen" width="200px" alt="" />
+      <img *ngIf="llego == true" [src]="hostImages" width="300px" alt="" />
+    </div>
+  </div>
+</div>

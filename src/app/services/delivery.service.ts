@@ -11,6 +11,8 @@ export class DeliveryService {
   });
   constructor(private http: HttpClient) {}
 
+  //EMPRESAS CRUD
+
   cargarTipoEmpresa() {
     return this.http.post(`${this.servidorLocal}/tipoEmpresa`, null);
   }
@@ -27,6 +29,40 @@ export class DeliveryService {
 
   empresaId(data: any) {
     return this.http.post(`${this.servidorLocal}/idEmpresa`, data, {
+      headers: this.headers,
+    });
+  }
+
+  actualizarEmpresa(data: any) {
+    return this.http.post(`${this.servidorLocal}/actualizarEmpresa`, data, {
+      headers: this.headers,
+    });
+  }
+  eliminarEmpresa(data: any) {
+    return this.http.post(`${this.servidorLocal}/eliminarEmpresa`, data, {
+      headers: this.headers,
+    });
+  }
+
+  ///PRODUCTOS CRUD
+  productoId(data: any) {
+    return this.http.post(`${this.servidorLocal}/idProductos`, data, {
+      headers: this.headers,
+    });
+  }
+  insertarProducto(data: any) {
+    return this.http.post(`${this.servidorLocal}/insertarProducto`, data, {
+      headers: this.headers,
+    });
+  }
+
+  actualizarProducto(data: any) {
+    return this.http.post(`${this.servidorLocal}/actualizarProducto`, data, {
+      headers: this.headers,
+    });
+  }
+  eliminarProducto(data: any) {
+    return this.http.post(`${this.servidorLocal}/eliminarProducto`, data, {
       headers: this.headers,
     });
   }

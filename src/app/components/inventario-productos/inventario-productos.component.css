@@ -14,7 +14,7 @@ input[type="file"] {
   z-index: 2;
 }
 
-img {
+#imgCargar {
   z-index: 1;
 }
 
@@ -24,10 +24,14 @@ img {
   justify-content: space-evenly;
 }
 
+.caja-productos {
+  margin-bottom: 100px;
+}
+
 @media (max-width: 1000px) {
-  form {
+  .form {
     flex-direction: column-reverse;
     justify-content: center;
-    align-items: ce;
+    align-items: center;
   }
 }
