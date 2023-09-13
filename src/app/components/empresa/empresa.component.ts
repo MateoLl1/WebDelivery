@@ -36,4 +36,11 @@ export class EmpresaComponent {
       this.route.navigate(['infoEmpresa', data.id]);
     });
   }
+
+  navegarInformeVentas() {
+    this._activatedRoute.params.subscribe((data: any) => {
+      console.log(data.id);
+      this.route.navigate(['informeVentas', data.id]);
+    });
+  }
 }

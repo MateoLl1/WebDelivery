@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DeliveryService {
-  servidorLocal = 'http://localhost:4040';
+  online: string = 'https://mateoservice.onrender.com';
+  local: string = 'https://mateoservice.onrender.com';
+  servidorLocal = `${this.online}`;
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
@@ -40,6 +42,12 @@ export class DeliveryService {
   }
   eliminarEmpresa(data: any) {
     return this.http.post(`${this.servidorLocal}/eliminarEmpresa`, data, {
+      headers: this.headers,
+    });
+  }
+
+  informeVentasId(data: any) {
+    return this.http.post(`${this.servidorLocal}/facturaIdEmpresa`, data, {
       headers: this.headers,
     });
   }

@@ -1,1 +1,42 @@
-<p>informes-empresa works!</p>
+<div *ngFor="let item of empresa" class="text-center m-2">
+  <img
+    [src]="item.em_imagen"
+    alt="Logo"
+    width="80"
+    height="80"
+    class="d-inline-block align-text-top"
+    id="imgCargar"
+  />
+  <hr />
+</div>
+
+<h1 class="text-center">Informe de ventas</h1>
+
+<div class="caja-productos" *ngIf="facturas.length === 0">
+  <div style="margin-top: 30px" class="alert alert-danger" role="alert">
+    No has tenido ninguna compra
+  </div>
+</div>
+<div class="cont-ventas" *ngIf="facturas.length > 0">
+  <div *ngFor="let item of facturas" class="alert alert-success" role="alert">
+    <div class="cont-perfil">
+      {{ item.fac_fecha | date : "YYYY-MM-dd" }}<br />
+      <img id="imgPerfil" [src]="item.us_imagen" alt="" />
+    </div>
+    Cliente : {{ item.us_nombre }} <br />
+    Detalle venta: {{ item.fac_des_pro }} <br />
+    Detalle precio: {{ item.fac_des_pre }} <br />
+    <h4 style="text-align: right">
+      Total: {{ item.fac_total | number : "1.2-2" }}
+    </h4>
+  </div>
+</div>
+
+<div
+  *ngIf="facturas.length > 0"
+  style="margin-bottom: 100px"
+  class="alert alert-primary"
+  role="alert"
+>
+  <h1>Total de ventas: {{ sumaFacTotal | number : "1.2-2" }}</h1>
+</div>
